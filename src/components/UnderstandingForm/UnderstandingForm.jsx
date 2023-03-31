@@ -2,49 +2,50 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function FeelingForm() {
+function UnderstandingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [feeling, setFeeling] = useState(0);
+  const [understanding, setUnderstanding] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("in handleSubmit", feeling);
+    console.log("in handleSubmit", understanding);
 
     // TODO: input validation
 
     dispatch({
-      type: "NEW_FEELING_RATING",
-      payload: feeling,
+      type: "NEW_UNDERSTANDING_RATING",
+      payload: understanding,
     });
 
-    history.push("/understanding");
+    history.push("/");
   };
 
-  const handleFeelingChange = (event) => {
-    setFeeling(event.target.value);
+  const handleUnderstandingChange = (event) => {
+    setUnderstanding(event.target.value);
   };
 
   const nextHandler = () => {
     console.log("in nextHandler");
-    history.push("/understanding");
+    history.push("/");
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>How are you feeling today</h1>
+      <h1>How well are you understanding the content?</h1>
       <label>
-        Feeling?
+        Understanding?
         <input
           type="number"
-          name="fRating"
-          value={feeling}
-          onChange={handleFeelingChange}
+          name="uRating"
+          value={understanding}
+          onChange={handleUnderstandingChange}
         />
       </label>
+
       <button type="submit">NEXT</button>
     </form>
   );
 }
 
-export default FeelingForm;
+export default UnderstandingForm;
