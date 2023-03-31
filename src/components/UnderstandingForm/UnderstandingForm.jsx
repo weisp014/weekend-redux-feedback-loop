@@ -18,16 +18,11 @@ function UnderstandingForm() {
       payload: understanding,
     });
 
-    history.push("/");
+    history.push("/supported");
   };
 
   const handleUnderstandingChange = (event) => {
     setUnderstanding(event.target.value);
-  };
-
-  const nextHandler = () => {
-    console.log("in nextHandler");
-    history.push("/");
   };
 
   return (
