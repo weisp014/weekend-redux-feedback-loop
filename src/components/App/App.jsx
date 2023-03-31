@@ -31,6 +31,9 @@ function App() {
         <Route path="/review">
           <Review />
         </Route>
+        <Route path="/complete">
+          
+        </Route>
       </Router>
     </div>
   );
