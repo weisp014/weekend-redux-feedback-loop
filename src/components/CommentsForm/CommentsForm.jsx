@@ -29,6 +29,7 @@ function CommentsForm() {
       <label>
         Comments?
         <input
+          className="ratingInput"
           type="text"
           name="comments"
           value={comments}

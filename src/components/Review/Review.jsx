@@ -15,7 +15,7 @@ function Review() {
         <p>Understanding: {understanding}</p>
         <p>Support: {support}</p>
         <p>Comments: {comments}</p>
-        <button>SUBMIT</button>
+        <button onClick={() => {}}>SUBMIT</button>
         </>
     )
 }

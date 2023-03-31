@@ -31,6 +31,7 @@ function SupportedForm() {
       <label>
         Support?
         <input
+          className="ratingInput"
           type="number"
           name="sRating"
           value={supported}
