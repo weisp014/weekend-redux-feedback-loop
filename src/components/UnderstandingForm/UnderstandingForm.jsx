@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 function UnderstandingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [understanding, setUnderstanding] = useState(0);
+  const [understanding, setUnderstanding] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,6 +35,8 @@ function UnderstandingForm() {
           name="uRating"
           value={understanding}
           onChange={handleUnderstandingChange}
+          min="1"
+          max="5"
         />
       </label>
 

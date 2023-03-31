@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 function SupportedForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [supported, setSupported] = useState(0);
+  const [supported, setSupported] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,6 +35,8 @@ function SupportedForm() {
           name="sRating"
           value={supported}
           onChange={handleSupportChange}
+          min="1"
+          max="5"
         />
       </label>
 

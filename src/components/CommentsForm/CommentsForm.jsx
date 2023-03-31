@@ -11,8 +11,6 @@ function CommentsForm() {
     event.preventDefault();
     console.log("in handleSubmit", comments);
 
-    // TODO: input validation
-
     dispatch({
       type: "NEW_COMMENTS",
       payload: comments,
