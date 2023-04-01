@@ -1,6 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 function CommentsForm() {
   const history = useHistory();
@@ -23,22 +25,35 @@ function CommentsForm() {
     setComments(event.target.value);
   };
 
+  // return to previous page
+  const goBack = () => {
+    history.goBack();
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Any comments you want to leave?</h1>
-      <label>
-        Comments?
-        <input
+    <>
+      <div className="backBtn">
+        <Button onClick={goBack} variant="contained" size="large" type="button">
+          BACK
+        </Button>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <h1 className="formTitle">Any comments you want to leave?</h1>
+        <TextField
           className="ratingInput"
+          id="demo-helper-text-aligned"
           type="text"
-          name="comments"
-          value={comments}
+          label="Comments?"
+          helperText="Optional"
           onChange={handleCommentsChange}
         />
-      </label>
-
-      <button type="submit">NEXT</button>
-    </form>
+        <span className="nextBtn">
+          <Button variant="contained" size="large" type="submit">
+            NEXT
+          </Button>
+        </span>
+      </form>
+    </>
   );
 }
 

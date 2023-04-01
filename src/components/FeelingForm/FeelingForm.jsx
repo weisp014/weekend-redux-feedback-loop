@@ -13,7 +13,7 @@ function FeelingForm() {
     event.preventDefault();
     console.log("in handleSubmit", feeling);
 
-    //alert if no input
+    //alert if no input or outside range
     if (!feeling || Number(feeling) > 5 || Number(feeling < 1)) {
       alert("Enter number between 1 and 5");
       return;

@@ -1,17 +1,23 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 function SupportedForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [supported, setSupported] = useState('');
+  const [supported, setSupported] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("in handleSubmit", supported);
 
-    // TODO: input validation
+    //alert if no input or outside range
+    if (!supported || Number(supported) > 5 || Number(supported < 1)) {
+      alert("Enter number between 1 and 5");
+      return;
+    }
 
     dispatch({
       type: "NEW_SUPPORTED_RATING",
@@ -25,24 +31,36 @@ function SupportedForm() {
     setSupported(event.target.value);
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <h1>How well are you being supported?</h1>
-      <label>
-        Support?
-        <input
-          className="ratingInput"
-          type="number"
-          name="sRating"
-          value={supported}
-          onChange={handleSupportChange}
-          min="1"
-          max="5"
-        />
-      </label>
+  // return to previous page
+  const goBack = () => {
+    history.goBack();
+  };
 
-      <button type="submit">NEXT</button>
-    </form>
+  return (
+    <>
+      <div className="backBtn">
+        <Button onClick={goBack} variant="contained" size="large" type="button">
+          BACK
+        </Button>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <h1 className="formTitle">How well are you being supported?</h1>
+        <TextField
+          className="ratingInput"
+          id="demo-helper-text-aligned"
+          type="text"
+          label="Supported?"
+          helperText="Enter number 1 - 5"
+          onChange={handleSupportChange}
+          inputProps={{ inputMode: "numeric", pattern: "[1-5]*" }}
+        />
+        <span className="nextBtn">
+          <Button variant="contained" size="large" type="submit">
+            NEXT
+          </Button>
+        </span>
+      </form>
+    </>
   );
 }
 
