@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,23 +8,22 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import DeleteIcon from '@mui/icons-material/Delete';
-import Tooltip from '@mui/material/Tooltip';
+import AlertDialog from "../AlertDialog/AlertDialog";
 
-function Admin() {
+function Admin( {getFeedback}) {
   const rows = useSelector((store) => store.feedback);
 
   const deleteResponse = (id) => {
     console.log('delete response for id:', id);
     // TODO: add confirmation before deleting
 
-    // axios.delete(`/gallery/${id}`)
-    //         .then((response) => {
-    //             // getResponses?
-    //         })
-    //         .catch((err) => {
-    //             alert('error during delete request', err);
-    //         });
+    axios.delete(`/${id}`)
+            .then((response) => {
+                getFeedback();
+            })
+            .catch((err) => {
+                alert('error during delete request', err);
+            });
   }
 
   return (
@@ -55,16 +55,7 @@ function Admin() {
                 <TableCell align="center">{row.support}</TableCell>
                 <TableCell align="center">{row.comments}</TableCell>
                 <TableCell align="center">
-                  <Tooltip title="Delete">
-                    <DeleteIcon
-                      fontSize="medium"
-                      variant="contained"
-                      color="error"
-                      onClick={() => deleteResponse(row.id)}
-                    >
-                      DELETE
-                    </DeleteIcon>
-                  </Tooltip>
+                  <AlertDialog deleteResponse={deleteResponse} id={row.id} />
                 </TableCell>
               </TableRow>
             ))}
