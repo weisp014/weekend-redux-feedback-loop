@@ -9,6 +9,8 @@ import logger from "redux-logger";
 const feelingRating = (state = 0, action) => {
   if (action.type === "NEW_FEELING_RATING") {
     return action.payload;
+  } else if (action.type === "RESET_FEEDBACK") {
+    return 0;
   }
   return state;
 };
@@ -16,6 +18,8 @@ const feelingRating = (state = 0, action) => {
 const understandingRating = (state = 0, action) => {
   if (action.type === "NEW_UNDERSTANDING_RATING") {
     return action.payload;
+  } else if (action.type === "RESET_FEEDBACK") {
+    return 0;
   }
   return state;
 };
@@ -23,6 +27,8 @@ const understandingRating = (state = 0, action) => {
 const supportedRating = (state = 0, action) => {
   if (action.type === "NEW_SUPPORTED_RATING") {
     return action.payload;
+  } else if (action.type === "RESET_FEEDBACK") {
+    return 0;
   }
   return state;
 };
@@ -30,6 +36,8 @@ const supportedRating = (state = 0, action) => {
 const comments = (state = "", action) => {
   if (action.type === "NEW_COMMENTS") {
     return action.payload;
+  } else if (action.type === "RESET_FEEDBACK") {
+    return "";
   }
   return state;
 };

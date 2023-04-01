@@ -7,6 +7,7 @@ import UnderstandingForm from "../UnderstandingForm/UnderstandingForm";
 import SupportedForm from "../SupportedForm/SupportedForm";
 import CommentsForm from "../CommentsForm/CommentsForm";
 import Review from "../Review/Review";
+import Complete from "../Complete/Complete";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Review />
         </Route>
         <Route path="/complete">
-          
+          <Complete />
         </Route>
       </Router>
     </div>
