@@ -6,7 +6,7 @@ _Duration: Weekend Sprint_
 
 This application is a single page application (SPA) feedback form that collects responses over 4 different views. There is a separate review page for each question with a submit button on the last page to save responses to the database. The user has the ability to go back to previous responses and change their answers before submitting.
 
-There is a separate admin page where all responses are listed from the database. There is an option to delete individual responses.
+There is a link to an admin page in the upper left where all responses are listed from the database. Individual responses can be deleted.
 
 ## Screen Shots
 HOME PAGE:
