@@ -13,10 +13,8 @@ import AlertDialog from "../AlertDialog/AlertDialog";
 function Admin( {getFeedback}) {
   const rows = useSelector((store) => store.feedback);
 
+  // delete response from database by "id"
   const deleteResponse = (id) => {
-    console.log('delete response for id:', id);
-    // TODO: add confirmation before deleting
-
     axios.delete(`/${id}`)
             .then((response) => {
                 getFeedback();

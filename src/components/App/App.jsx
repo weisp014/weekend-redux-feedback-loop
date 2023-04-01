@@ -27,7 +27,7 @@ function App() {
       .then((response) => {
         dispatch({
           type: "GET_FEEDBACK",
-          payload: response.data
+          payload: response.data,
         });
       })
       .catch((err) => {
@@ -41,6 +41,10 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Feedback!</h1>
           <h4>Don't forget it!</h4>
+            <ul className="links">
+              <li><Link to="/admin">ADMIN</Link></li>
+              <li><Link to="/">HOME</Link></li>
+            </ul>
         </header>
         <Route exact path="/">
           <FeelingForm />
@@ -55,7 +59,7 @@ function App() {
           <CommentsForm />
         </Route>
         <Route path="/review">
-          <Review />
+          <Review getFeedback={getFeedback} />
         </Route>
         <Route path="/complete">
           <Complete />

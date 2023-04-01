@@ -9,10 +9,11 @@ function Complete() {
   const resetResponses = () => {
     console.log("resetting to beginning");
 
-    //reset reducers
+    // reset reducers
     dispatch({
       type: "RESET_FEEDBACK",
     });
+    // go to home page
     history.push("/");
   };
 

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 
-function Review() {
+function Review( {getFeedback} ) {
   const history = useHistory();
   const feeling = useSelector((store) => store.feelingRating);
   const understanding = useSelector((store) => store.understandingRating);
@@ -25,6 +25,7 @@ function Review() {
       .post("/response", responses)
       .then((response) => {
         console.log(response);
+        getFeedback();
         history.push('/complete');
       })
       .catch((err) => {
