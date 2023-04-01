@@ -1,22 +1,22 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 function FeelingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [feeling, setFeeling] = useState('');
+  const [feeling, setFeeling] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("in handleSubmit", feeling);
 
     //alert if no input
-    if(!feeling || Number(feeling) > 5 || Number(feeling < 1)) {
-      alert('Enter number between 1 and 5');
-      return
+    if (!feeling || Number(feeling) > 5 || Number(feeling < 1)) {
+      alert("Enter number between 1 and 5");
+      return;
     }
 
     dispatch({
@@ -31,9 +31,20 @@ function FeelingForm() {
     setFeeling(event.target.value);
   };
 
+  // return to previous page
+  const goBack = () => {
+    history.goBack();
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>How are you feeling today?</h1>
+    <>
+      <div className="backBtn">
+        <Button onClick={goBack} variant="contained" size="large" type="button">
+          BACK
+        </Button>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <h1 className="formTitle">How are you feeling today?</h1>
         <TextField
           className="ratingInput"
           id="demo-helper-text-aligned"
@@ -41,10 +52,15 @@ function FeelingForm() {
           label="Feeling?"
           helperText="Enter number 1 - 5"
           onChange={handleFeelingChange}
-          inputProps={{ inputMode: 'numeric', pattern: '[1-5]*' }}
+          inputProps={{ inputMode: "numeric", pattern: "[1-5]*" }}
         />
-      <Button variant="contained" size="large" type="submit">NEXT</Button>
-    </form>
+        <span className="nextBtn">
+          <Button variant="contained" size="large" type="submit">
+            NEXT
+          </Button>
+        </span>
+      </form>
+    </>
   );
 }
 

@@ -25,3 +25,13 @@ h4 {
 .ratingInput {
   width: 20%;
 }
+
+.backBtn {
+  display: flex;
+  justify-content: left;
+  margin-left: 20px;
+}
+
+.nextBtn {
+  margin-left: 20px;
+}
