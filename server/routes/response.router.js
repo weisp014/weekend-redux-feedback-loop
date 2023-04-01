@@ -17,7 +17,20 @@ router.post('/response', (req, res) => {
         .catch((err) => {
             console.log(`Error making db query ${sqlText}`, err);
             res.sendStatus(500);
+        });
+})
+
+// GET all responses
+router.get('/allresponses', (req, res) => {
+    const sqlText = `SELECT * FROM "feedback" ORDER BY "id" DESC;`;
+    pool.query(sqlText)
+        .then((result) => {
+            res.send(result.rows);
         })
+        .catch((err) => {
+            console.log(`Error getting all responses`, err);
+            res.sendStatus(500);
+        });
 })
 
 module.exports = router;

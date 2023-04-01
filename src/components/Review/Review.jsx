@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 function Review() {
   const history = useHistory();
@@ -9,7 +10,7 @@ function Review() {
   const support = useSelector((store) => store.supportedRating);
   const comments = useSelector((store) => store.comments);
 
-  //TODO: POST responses to database!
+  // POST responses to database
   const submitResponses = () => {
     console.log("submitting responses");
 
@@ -31,14 +32,31 @@ function Review() {
       });
   };
 
+  // return to previous page
+  const goBack = () => {
+    history.goBack();
+  }
+
   return (
     <>
+    <div className="backBtn">
+        <Button onClick={goBack} variant="contained" size="large" type="button">
+          BACK
+        </Button>
+      </div>
       <h1>Review Your Feedback</h1>
-      <p>Feelings: {feeling}</p>
-      <p>Understanding: {understanding}</p>
-      <p>Support: {support}</p>
-      <p>Comments: {comments}</p>
-      <button onClick={() => submitResponses()}>SUBMIT</button>
+      <br></br>
+      <h2>Feelings: {feeling}</h2>
+      <h2>Understanding: {understanding}</h2>
+      <h2>Support: {support}</h2>
+      <h2>Comments: {comments}</h2>
+      <Button 
+      onClick={() => submitResponses()}
+      variant="contained" 
+      size="large"
+      >
+        SUBMIT
+      </Button>
     </>
   );
 }

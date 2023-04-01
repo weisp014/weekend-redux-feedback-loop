@@ -2,14 +2,39 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import FeelingForm from "../FeelingForm/FeelingForm";
 import UnderstandingForm from "../UnderstandingForm/UnderstandingForm";
 import SupportedForm from "../SupportedForm/SupportedForm";
 import CommentsForm from "../CommentsForm/CommentsForm";
 import Review from "../Review/Review";
 import Complete from "../Complete/Complete";
+import Admin from "../Admin/Admin";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getFeedback();
+  }, []);
+
+  // GET all feedback results
+  const getFeedback = () => {
+    console.log("getting feedback");
+    axios
+      .get("/allresponses")
+      .then((response) => {
+        dispatch({
+          type: "GET_FEEDBACK",
+          payload: response.data
+        });
+      })
+      .catch((err) => {
+        console.log("error getting responses:", err);
+      });
+  };
+
   return (
     <div className="App">
       <Router>
@@ -34,6 +59,9 @@ function App() {
         </Route>
         <Route path="/complete">
           <Complete />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Router>
     </div>

@@ -31,18 +31,8 @@ function FeelingForm() {
     setFeeling(event.target.value);
   };
 
-  // return to previous page
-  const goBack = () => {
-    history.goBack();
-  }
-
   return (
     <>
-      <div className="backBtn">
-        <Button onClick={goBack} variant="contained" size="large" type="button">
-          BACK
-        </Button>
-      </div>
       <form onSubmit={handleSubmit}>
         <h1 className="formTitle">How are you feeling today?</h1>
         <TextField
