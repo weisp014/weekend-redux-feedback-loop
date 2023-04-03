@@ -8,7 +8,7 @@ This application is a single page application (SPA) feedback form that collects 
 
 There is a link to an admin page in the upper left where all responses are listed from the database. Individual responses can be deleted.
 
-## Screen Shots
+## Screenshots
 HOME PAGE:
 <img src="public/images/home.jpg" width="500px"/>
 
@@ -27,7 +27,7 @@ ADMIN PAGE:
 3. Open up your editor of choice and run `npm install`
 4. Run `npm run server` in a terminal
 5. Run `npm run client` in another terminal
-6. The `npm run client` command will open up a new browser tab for you!
+6. The `npm run client` command will open up a new browser tab for you
 
 ## Technologies
 React, Redux, Node, Material-UI, Javascript, HTML/CSS, PostgreSQL
