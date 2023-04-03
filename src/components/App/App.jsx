@@ -41,10 +41,12 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Feedback!</h1>
           <h4>Don't forget it!</h4>
-            <ul className="links">
+          <nav>
+            <ul>
               <li><Link to="/admin">ADMIN</Link></li>
               <li><Link to="/">HOME</Link></li>
             </ul>
+            </nav>
         </header>
         <Route exact path="/">
           <FeelingForm />
